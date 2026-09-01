@@ -19,6 +19,7 @@ npx skills add andyw8/agent-skills --skill setup-biome-jumpstart-pro -a claude-c
 
 | Skill | What it does |
 | --- | --- |
+| [reactionview](/skills/reactionview/SKILL.md) | Install or configure ReActionView in a Rails app for HTML-aware ERB rendering, validation, and a debug mode |
 | [setup-biome-jumpstart-pro](/skills/setup-biome-jumpstart-pro/SKILL.md) | Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization |
 
 ## Adding a Skill
