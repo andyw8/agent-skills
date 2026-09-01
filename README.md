@@ -11,17 +11,17 @@ This is a plugin marketplace for Claude Code. Each plugin provides specialized c
 **From terminal:**
 
 ```bash
-claude plugin marketplace add andyw8/skills
+claude plugin marketplace add andyw8/agent-skills
 
 # Install specific plugins
-claude plugin install <plugin-name>@skills
+claude plugin install <plugin-name>@agent-skills
 ```
 
 **From a Claude session:**
 
 ```bash
-/plugin marketplace add andyw8/skills
-/plugin install <plugin-name>@skills
+/plugin marketplace add andyw8/agent-skills
+/plugin install <plugin-name>@agent-skills
 ```
 
 ## Available Plugins
