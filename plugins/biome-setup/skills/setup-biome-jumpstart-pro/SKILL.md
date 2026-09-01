@@ -33,7 +33,7 @@ This creates `biome.jsonc` with sensible defaults.
 
 ### Step 3: Configure biome.jsonc
 
-Replace the generated config with the contents from `references/biome-config.jsonc`. Key settings:
+Replace the generated config with the contents from `references/biome-config.jsonc`. Update the `$schema` version in the first line to match the installed Biome version (check `package.json` or run `npx biome --version`). Key settings:
 
 - **VCS integration**: Enabled with gitignore support
 - **Tab indentation**: Matches Jumpstart Pro conventions
