@@ -4,8 +4,24 @@
     "name": "Andy Waite"
   },
   "metadata": {
-    "description": "My personal collection of Claude Code plugins for various development tasks and workflows",
+    "description": "My personal collection of agent skills for various development tasks and workflows",
     "version": "0.1.0"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "setup-biome-jumpstart-pro",
+      "source": "./",
+      "strict": false,
+      "description": "Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization",
+      "category": "rails",
+      "keywords": [
+        "biome",
+        "rails",
+        "lint",
+        "javascript",
+        "jumpstart-pro"
+      ],
+      "skills": ["./skills/setup-biome-jumpstart-pro"]
+    }
+  ]
 }
