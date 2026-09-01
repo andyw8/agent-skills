@@ -22,6 +22,21 @@
         "jumpstart-pro"
       ],
       "skills": ["./skills/setup-biome-jumpstart-pro"]
+    },
+    {
+      "name": "reactionview",
+      "source": "./",
+      "strict": false,
+      "description": "Install or configure ReActionView in a Rails app, or add the gem, run its install generator, or write config/initializers/reactionview.rb",
+      "category": "rails",
+      "keywords": [
+        "rails",
+        "reactionview",
+        "erb",
+        "herb",
+        "templates"
+      ],
+      "skills": ["./skills/reactionview"]
     }
   ]
 }
