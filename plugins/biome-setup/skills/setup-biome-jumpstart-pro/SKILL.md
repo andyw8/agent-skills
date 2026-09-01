@@ -33,17 +33,41 @@ This creates `biome.jsonc` with sensible defaults.
 
 ### Step 3: Configure biome.jsonc
 
-Replace the generated config with the contents from `references/biome-config.jsonc`. Update the `$schema` version in the first line to match the installed Biome version (check `package.json` or run `npx biome --version`). Key settings:
+The `biome init --jsonc` output is already close to what Jumpstart Pro needs. Keep VCS integration, tab indentation, double quotes, and organized imports as generated. Modify the config as follows:
 
-- **VCS integration**: Enabled with gitignore support
-- **Tab indentation**: Matches Jumpstart Pro conventions
-- **Double quotes**: For JavaScript strings
-- **Organize imports**: Enabled via assist
-- **Ignore patterns**: `vendor` and `app/assets/tailwind` directories
-- **Disabled rules**: Rules that produce false positives on Jumpstart Pro code:
-  - `a11y/noSvgWithoutTitle`: Many decorative SVGs in Jumpstart Pro don't need titles
-  - `suspicious/useIterableCallbackReturn`: Common pattern in Stimulus controller callbacks
-  - `suspicious/useGetterReturn`: False positives with Stimulus controller value accessors
+1. **Add ignore patterns** under `files` to exclude `vendor` and `app/assets/tailwind`:
+
+   ```jsonc
+   "files": {
+       "ignoreUnknown": false,
+       "includes": ["**", "!vendor", "!app/assets/tailwind"]
+   }
+   ```
+
+2. **Disable rules** that produce false positives on Jumpstart Pro code. Add these under `linter.rules` (keeping `"preset": "recommended"`):
+   - `a11y/noSvgWithoutTitle: "off"` — many decorative SVGs in Jumpstart Pro don't need titles
+   - `suspicious/useIterableCallbackReturn: "off"` — common pattern in Stimulus controller callbacks
+   - `suspicious/useGetterReturn: "off"` — false positives with Stimulus controller value accessors
+
+   Resulting in:
+
+   ```jsonc
+   "linter": {
+       "enabled": true,
+       "rules": {
+           "preset": "recommended",
+           "a11y": {
+               "noSvgWithoutTitle": "off"
+           },
+           "suspicious": {
+               "useIterableCallbackReturn": "off",
+               "useGetterReturn": "off"
+           }
+       }
+   }
+   ```
+
+Leave the `$schema` line as generated — it always matches the installed version.
 
 ### Step 4: Run Biome Lint Auto-Fix
 
@@ -95,5 +119,4 @@ npx @biomejs/biome ci
 
 ### Reference Files
 
-- **`references/biome-config.jsonc`** — Complete biome.jsonc configuration for Jumpstart Pro
 - **`references/ci-diff.yml`** — Example diff showing the CI workflow changes
