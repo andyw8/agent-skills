@@ -1,7 +1,6 @@
 ---
-name: Setup Biome on Jumpstart Pro Rails
+name: setup-biome-jumpstart-pro
 description: This skill should be used when the user asks to "setup Biome", "add Biome to Rails", "configure Biome for Jumpstart Pro", "add JavaScript linting to Rails", or "replace ESLint with Biome" on a Jumpstart Pro Rails application.
-version: 0.1.0
 ---
 
 # Setup Biome on Jumpstart Pro Rails
@@ -120,3 +119,4 @@ npx @biomejs/biome ci
 ### Reference Files
 
 - **`references/ci-diff.yml`** — Example diff showing the CI workflow changes
+

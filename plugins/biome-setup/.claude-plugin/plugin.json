@@ -1,6 +1,0 @@
-{
-  "name": "biome-setup",
-  "description": "Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization",
-  "version": "0.1.0",
-  "skills": ["setup-biome-jumpstart-pro"]
-}
