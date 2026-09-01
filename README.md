@@ -1,29 +1,26 @@
-# Agent Skills Marketplace
+# Agent Skills
 
-My personal collection of Claude Code plugins for various development tasks and workflows.
-
-## What is this?
-
-This is a plugin marketplace for Claude Code. Each plugin provides specialized capabilities to make Claude better at specific tasks.
+My personal collection of agent skills for various development tasks and workflows.
 
 ## Installation
 
-**From terminal:**
-
 ```bash
-claude plugin marketplace add andyw8/skills
-
-# Install specific plugins
-claude plugin install <plugin-name>@skills
+claude plugin marketplace add andyw8/agent-skills
+claude plugin install setup-biome-jumpstart-pro@andyw8-skills
 ```
 
-**From a Claude session:**
+Or with `npx skills`:
 
 ```bash
-/plugin marketplace add andyw8/skills
-/plugin install <plugin-name>@skills
+npx skills add andyw8/agent-skills --skill setup-biome-jumpstart-pro -a claude-code -g
 ```
 
-## Available Plugins
+## Available Skills
 
-*Coming soon*
+| Skill | What it does |
+| --- | --- |
+| [setup-biome-jumpstart-pro](/skills/setup-biome-jumpstart-pro/SKILL.md) | Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization |
+
+## Adding a Skill
+
+Add `skills/<slug>/SKILL.md` with `name` (the same as the directory) and `description` in the front matter, then add a matching entry to the [marketplace manifest](/blob/main/.claude-plugin/marketplace.json) and a row in the table above. Whatever the skill needs at runtime goes in that same folder and ships with it.
