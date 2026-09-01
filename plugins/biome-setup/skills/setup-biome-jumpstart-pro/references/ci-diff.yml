@@ -1,0 +1,23 @@
+# CI Workflow Changes
+
+Add these steps to the `lint` job in `.github/workflows/ci.yml`, after the ERB lint step:
+
+```diff
+       - name: Lint ERB for consistent style
+         run: bundle exec erb_lint --lint-all
+
++      - name: Set up Biome
++        uses: biomejs/setup-biome@v2
++
++      - name: Run Biome
++        run: biome ci
++
+   test:
+```
+
+## Notes
+
+- Biome is added to the existing `lint` job, not as a separate job
+- `biomejs/setup-biome@v2` automatically detects the version from `package.json`
+- `biome ci` runs all checks (lint, format, imports) in one command
+- The `lint` job does not need a full Ruby setup for Biome, but sharing the job avoids duplicating the `test` job's setup
