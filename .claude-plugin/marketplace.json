@@ -24,6 +24,22 @@
       "skills": ["./skills/setup-biome-jumpstart-pro"]
     },
     {
+      "name": "configure-sqids",
+      "source": "./",
+      "strict": false,
+      "description": "Configure Sqids in a Rails app for short URL-safe IDs with a shared SqidsWrapper and Sqidable concern",
+      "category": "rails",
+      "keywords": [
+        "rails",
+        "sqids",
+        "ids",
+        "url-safe",
+        "to_param",
+        "find_by_sqid"
+      ],
+      "skills": ["./skills/configure-sqids"]
+    },
+    {
       "name": "reactionview",
       "source": "./",
       "strict": false,
