@@ -118,7 +118,9 @@ app's test suite (e.g. `bin/rails test`). Cover:
 
 Use `Rails.application.eager_load!` in a test to load every application model
 and assert that all of them include `Sqidable`. This guards against adding a
-new model and forgetting to include the concern:
+new model and forgetting to include the concern. No need to iterate the
+`app/models` file structure — `eager_load!` already loads every model, so
+filter `ActiveRecord::Base.descendants` directly:
 
 ```ruby
 require "test_helper"
@@ -132,7 +134,7 @@ class SqidableTest < ActiveSupport::TestCase
   test "every application model uses sqids" do
     Rails.application.eager_load!
 
-    app_model_classes.each do |klass|
+    app_models.each do |klass|
       next if EXCLUDED_MODELS.include?(klass.name)
 
       assert klass.include?(Sqidable), "#{klass.name} should include Sqidable"
@@ -141,31 +143,21 @@ class SqidableTest < ActiveSupport::TestCase
 
   private
 
-  def app_model_classes
-    base = Rails.root.join("app/models")
+  def app_models
+    ActiveRecord::Base.descendants.select do |klass|
+      next false if klass.abstract_class?
 
-    Dir[base.join("**/*.rb")].filter_map do |file|
-      relative = Pathname.new(file).relative_path_from(base).to_s.delete_suffix(".rb")
-      next if relative.start_with?("concerns/")
-
-      klass = relative.split("/").map(&:camelize).join("::").safe_constantize
-      next unless klass&.<(ActiveRecord::Base)
-      next if klass.abstract_class?
-
-      begin
-        klass if klass.table_exists?
-      rescue ActiveRecord::StatementInvalid
-        next
-      end
+      klass < ApplicationRecord
     end
   end
 end
 ```
 
-Adjust `EXCLUDED_MODELS` to match models in the app that must keep their real
-IDs (e.g. anything used for authentication or user-facing links). The helper
-walks `app/models`, skips files under `concerns/`, and only checks persisted,
-non-abstract subclasses of `ActiveRecord::Base`.
+`klass < ApplicationRecord` scopes to app models and drops `ApplicationRecord`
+itself (empty/abstract) plus ActiveRecord's internal bookkeeping classes like
+`ActiveRecord::SchemaMigration`. Adjust `EXCLUDED_MODELS` to match models in
+the app that must keep their real IDs (e.g. anything used for authentication
+or user-facing links).
 
 ## References
 
