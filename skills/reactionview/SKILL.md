@@ -6,9 +6,7 @@ description: Use when installing or configuring ReActionView (https://github.com
 # ReActionView
 
 ReActionView is a drop-in ActionView-compatible ERB engine built on
-[Herb::Engine](https://github.com/marcoroth/herb). It processes `.html.herb`
-templates natively with HTML-aware rendering, and can optionally intercept all
-`.html.erb` templates too.
+[Herb::Engine](https://github.com/marcoroth/herb).
 
 ## When to use
 
@@ -27,7 +25,7 @@ The generator creates `config/initializers/reactionview.rb`.
 
 ## Configuration
 
-Enable ERB interception to process all `.html.erb` templates with `Herb::Engine`:
+You MUST enable ERB interception to process all `.html.erb` templates with `Herb::Engine`:
 
 ```ruby
 # config/initializers/reactionview.rb
@@ -84,6 +82,13 @@ bin/rails runner 'puts ReActionView.config.inspect'
 
 Run the app's test suite (e.g. `bin/rails test`) to confirm existing
 `.html.erb` templates still render correctly with interception enabled.
+
+Finally, clear any precompiled assets so templates are re-rendered through the
+new engine:
+
+```bash
+bin/rails assets:clobber
+```
 
 ## References
 
