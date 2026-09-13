@@ -114,6 +114,59 @@ app's test suite (e.g. `bin/rails test`). Cover:
 - `to_param` returns the expected sqid
 - `find_by_sqid` finds the record and returns `nil` for invalid input
 
+### Enforce coverage with eager_load
+
+Use `Rails.application.eager_load!` in a test to load every application model
+and assert that all of them include `Sqidable`. This guards against adding a
+new model and forgetting to include the concern:
+
+```ruby
+require "test_helper"
+
+class SqidableTest < ActiveSupport::TestCase
+  # Persisted ActiveRecord models that intentionally do not use sqids.
+  # User and Account are Jumpstart engine models where changing to_param would
+  # break authentication and user-facing links, so they are excluded here.
+  EXCLUDED_MODELS = %w[User Account].freeze
+
+  test "every application model uses sqids" do
+    Rails.application.eager_load!
+
+    app_model_classes.each do |klass|
+      next if EXCLUDED_MODELS.include?(klass.name)
+
+      assert klass.include?(Sqidable), "#{klass.name} should include Sqidable"
+    end
+  end
+
+  private
+
+  def app_model_classes
+    base = Rails.root.join("app/models")
+
+    Dir[base.join("**/*.rb")].filter_map do |file|
+      relative = Pathname.new(file).relative_path_from(base).to_s.delete_suffix(".rb")
+      next if relative.start_with?("concerns/")
+
+      klass = relative.split("/").map(&:camelize).join("::").safe_constantize
+      next unless klass&.<(ActiveRecord::Base)
+      next if klass.abstract_class?
+
+      begin
+        klass if klass.table_exists?
+      rescue ActiveRecord::StatementInvalid
+        next
+      end
+    end
+  end
+end
+```
+
+Adjust `EXCLUDED_MODELS` to match models in the app that must keep their real
+IDs (e.g. anything used for authentication or user-facing links). The helper
+walks `app/models`, skips files under `concerns/`, and only checks persisted,
+non-abstract subclasses of `ActiveRecord::Base`.
+
 ## References
 
 - sqids-ruby gem: https://github.com/sqids/sqids-ruby
