@@ -19,10 +19,10 @@ npx skills add andyw8/agent-skills --skill setup-biome-jumpstart-pro -a claude-c
 
 | Skill | What it does |
 | --- | --- |
-| [reactionview](/skills/reactionview/SKILL.md) | Install or configure ReActionView in a Rails app for HTML-aware ERB rendering, validation, and a debug mode |
-| [setup-biome-jumpstart-pro](/skills/setup-biome-jumpstart-pro/SKILL.md) | Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization |
-| [configure-sqids](/skills/configure-sqids/SKILL.md) | Configure Sqids in a Rails app for short, URL-safe IDs with a shared SqidsWrapper and Sqidable concern |
+| [reactionview](skills/reactionview/SKILL.md) | Install or configure ReActionView in a Rails app for HTML-aware ERB rendering, validation, and a debug mode |
+| [setup-biome-jumpstart-pro](skills/setup-biome-jumpstart-pro/SKILL.md) | Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization |
+| [configure-sqids](skills/configure-sqids/SKILL.md) | Configure Sqids in a Rails app for short, URL-safe IDs with a shared SqidsWrapper and Sqidable concern |
 
 ## Adding a Skill
 
-Add `skills/<slug>/SKILL.md` with `name` (the same as the directory) and `description` in the front matter, then add a matching entry to the [marketplace manifest](/blob/main/.claude-plugin/marketplace.json) and a row in the table above. Whatever the skill needs at runtime goes in that same folder and ships with it.
+Add `skills/<slug>/SKILL.md` with `name` (the same as the directory) and `description` in the front matter, then add a matching entry to the [marketplace manifest](.claude-plugin/marketplace.json) and a row in the table above. Whatever the skill needs at runtime goes in that same folder and ships with it.
