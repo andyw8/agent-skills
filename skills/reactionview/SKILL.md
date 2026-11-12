@@ -1,6 +1,7 @@
 ---
 name: reactionview
 description: Use when installing or configuring ReActionView (https://github.com/marcoroth/reactionview) in a Rails app, or when adding the gem, running its install generator, or writing config/initializers/reactionview.rb.
+license: MIT
 ---
 
 # ReActionView

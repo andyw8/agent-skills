@@ -1,6 +1,7 @@
 ---
 name: configure-sqids
 description: This skill should be used when the user asks to "configure Sqids", "add Sqids to Rails", "add the sqids gem", "add short URL-safe IDs", "generate YouTube-like IDs", "replace numeric IDs with opaque IDs", "add a Sqidable concern", or "use find_by_sqid" in a Rails application.
+license: MIT
 ---
 
 # Configure Sqids in Rails
