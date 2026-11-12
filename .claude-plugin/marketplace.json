@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "setup-biome-jumpstart-pro",
-      "source": "./",
+      "source": "./skills/setup-biome-jumpstart-pro",
       "strict": false,
       "description": "Setup Biome on Jumpstart Pro Rails apps for JavaScript linting, formatting, and import organization",
       "category": "rails",
@@ -21,11 +21,11 @@
         "javascript",
         "jumpstart-pro"
       ],
-      "skills": ["./skills/setup-biome-jumpstart-pro"]
+      "skills": ["./"]
     },
     {
       "name": "configure-sqids",
-      "source": "./",
+      "source": "./skills/configure-sqids",
       "strict": false,
       "description": "Configure Sqids in a Rails app for short URL-safe IDs with a shared SqidsWrapper and Sqidable concern",
       "category": "rails",
@@ -37,11 +37,11 @@
         "to_param",
         "find_by_sqid"
       ],
-      "skills": ["./skills/configure-sqids"]
+      "skills": ["./"]
     },
     {
       "name": "reactionview",
-      "source": "./",
+      "source": "./skills/reactionview",
       "strict": false,
       "description": "Install or configure ReActionView in a Rails app, or add the gem, run its install generator, or write config/initializers/reactionview.rb",
       "category": "rails",
@@ -52,7 +52,7 @@
         "herb",
         "templates"
       ],
-      "skills": ["./skills/reactionview"]
+      "skills": ["./"]
     }
   ]
 }
