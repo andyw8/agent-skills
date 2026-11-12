@@ -1,6 +1,7 @@
 ---
 name: setup-biome-jumpstart-pro
 description: This skill should be used when the user asks to "setup Biome", "add Biome to Rails", "configure Biome for Jumpstart Pro", "add JavaScript linting to Rails", or "replace ESLint with Biome" on a Jumpstart Pro Rails application.
+license: MIT
 ---
 
 # Setup Biome on Jumpstart Pro Rails
